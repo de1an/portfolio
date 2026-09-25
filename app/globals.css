@@ -1,3 +1,144 @@
+/* Archivo Mono isn't in next/font's bundled Google Fonts list, so it's loaded via CSS import. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Mono&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg: #15160f;
+  --bg-rgb: 21 22 15;
+  --ink: #eef2df;
+  --ink-rgb: 238 242 223;
+  --muted: #9aa085;
+  --muted-2: #c2c9a8;
+  --faint: #6c7059;
+  --accent: #c8f04f;
+  --accent-rgb: 200 240 79;
+  --accent-dim: #7f8f4a;
+  --on-ink-muted: #31331f;
+  --card: #1e1f16;
+  --card-2: #24261a;
+  --card-3: #2b2d1e;
+  --card-4: #24261a;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body[data-cursor="on"],
+body[data-cursor="on"] a,
+body[data-cursor="on"] button {
+  cursor: none;
+}
+
+[data-rail]::-webkit-scrollbar {
+  height: 0;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(-25% 0 0 0);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-64px, -64px, 0);
+  }
+}
+
+@keyframes rule-slide {
+  0% {
+    transform: translateX(-40%);
+  }
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+@keyframes trace-line {
+  0% {
+    stroke-dashoffset: 1500;
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(46px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes card-flip {
+  0%,
+  20% {
+    transform: rotateY(0deg);
+  }
+  45%,
+  65% {
+    transform: rotateY(180deg);
+  }
+  90%,
+  100% {
+    transform: rotateY(360deg);
+  }
+}

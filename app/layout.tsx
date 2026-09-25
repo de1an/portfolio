@@ -1,25 +1,38 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import type { Metadata } from 'next';
+import { Anton, Archivo } from 'next/font/google';
+import './globals.css';
+import { LanguageProvider } from '@/components/common/language-provider';
+
+const anton = Anton({
+	subsets: ['latin'],
+	weight: '400',
+	variable: '--font-anton',
+});
+
+const archivo = Archivo({
+	subsets: ['latin'],
+	weight: ['400', '500', '600'],
+	variable: '--font-archivo',
+});
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Personal portfolio site",
+	title: 'Dejan Lukić — Software Developer',
+	description: 'Digital solutions that make a difference.',
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
-        <Nav />
-        <main className="flex-1 px-6 py-12">{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en'>
+			<body
+				className={`${anton.variable} ${archivo.variable} font-sans text-ink`}
+				suppressHydrationWarning
+			>
+				<LanguageProvider>{children}</LanguageProvider>
+			</body>
+		</html>
+	);
 }

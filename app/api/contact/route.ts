@@ -1,23 +1,31 @@
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+	return value
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;');
 }
 
-function contactEmailHtml({ name, email, message }: { name: string; email: string; message: string }): string {
-  const safeName = escapeHtml(name);
-  const safeEmail = escapeHtml(email);
-  const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+function contactEmailHtml({
+	name,
+	email,
+	message,
+}: {
+	name: string;
+	email: string;
+	message: string;
+}): string {
+	const safeName = escapeHtml(name);
+	const safeEmail = escapeHtml(email);
+	const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
-  return `<!DOCTYPE html>
+	return `<!DOCTYPE html>
 <html>
   <body style="margin:0;padding:0;background-color:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
@@ -51,51 +59,67 @@ function contactEmailHtml({ name, email, message }: { name: string; email: strin
 </html>`;
 }
 
-function contactEmailText({ name, email, message }: { name: string; email: string; message: string }): string {
-  return `Nova poruka sa sajta\n\nIme: ${name}\nEmail: ${email}\n\n${message}\n\n— Ova poruka je stigla sa kontakt forme na sajtu. Odgovori direktno na ovaj mejl da odgovoriš ${name}.`;
+function contactEmailText({
+	name,
+	email,
+	message,
+}: {
+	name: string;
+	email: string;
+	message: string;
+}): string {
+	return `Nova poruka sa sajta\n\nIme: ${name}\nEmail: ${email}\n\n${message}\n\n— Ova poruka je stigla sa kontakt forme na sajtu. Odgovori direktno na ovaj mejl da odgovoriš ${name}.`;
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json().catch(() => null);
+	const body = await request.json().catch(() => null);
 
-  const name = typeof body?.name === "string" ? body.name.trim() : "";
-  const email = typeof body?.email === "string" ? body.email.trim() : "";
-  const message = typeof body?.message === "string" ? body.message.trim() : "";
+	const name = typeof body?.name === 'string' ? body.name.trim() : '';
+	const email = typeof body?.email === 'string' ? body.email.trim() : '';
+	const message = typeof body?.message === 'string' ? body.message.trim() : '';
 
-  if (!name || !email || !message) {
-    return NextResponse.json(
-      { error: "Name, email and message are required." },
-      { status: 400 }
-    );
-  }
+	if (!name || !email || !message) {
+		return NextResponse.json(
+			{ error: 'Name, email and message are required.' },
+			{ status: 400 },
+		);
+	}
 
-  if (!EMAIL_PATTERN.test(email)) {
-    return NextResponse.json(
-      { error: "Please provide a valid email address." },
-      { status: 400 }
-    );
-  }
+	if (!EMAIL_PATTERN.test(email)) {
+		return NextResponse.json(
+			{ error: 'Please provide a valid email address.' },
+			{ status: 400 },
+		);
+	}
 
-  const adminEmail = process.env.ADMIN_EMAIL;
-  if (!process.env.RESEND_API_KEY || !adminEmail) {
-    console.error("Contact form: RESEND_API_KEY or ADMIN_EMAIL is not set.");
-    return NextResponse.json({ error: "Email is not configured." }, { status: 500 });
-  }
+	const adminEmail = process.env.ADMIN_EMAIL;
+	if (!process.env.RESEND_API_KEY || !adminEmail) {
+		console.error('Contact form: RESEND_API_KEY or ADMIN_EMAIL is not set.');
+		return NextResponse.json(
+			{ error: 'Email is not configured.' },
+			{ status: 500 },
+		);
+	}
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const { error } = await resend.emails.send({
-    from: process.env.CONTACT_FROM_EMAIL || "Portfolio sajt <onboarding@resend.dev>",
-    to: adminEmail,
-    replyTo: email,
-    subject: `Nova poruka sa sajta — ${name}`,
-    html: contactEmailHtml({ name, email, message }),
-    text: contactEmailText({ name, email, message }),
-  });
+	const resend = new Resend(process.env.RESEND_API_KEY);
+	const { error } = await resend.emails.send({
+		from:
+			process.env.CONTACT_FROM_EMAIL ||
+			'Portfolio sajt <onboarding@resend.dev>',
+		to: adminEmail,
+		replyTo: email,
+		subject: `Nova poruka sa sajta — ${name}`,
+		html: contactEmailHtml({ name, email, message }),
+		text: contactEmailText({ name, email, message }),
+	});
 
-  if (error) {
-    console.error("Contact form: Resend failed to send:", error);
-    return NextResponse.json({ error: "Message could not be sent." }, { status: 502 });
-  }
+	if (error) {
+		console.error('Contact form: Resend failed to send:', error);
+		return NextResponse.json(
+			{ error: 'Message could not be sent.' },
+			{ status: 502 },
+		);
+	}
 
-  return NextResponse.json({ ok: true });
+	return NextResponse.json({ ok: true });
 }

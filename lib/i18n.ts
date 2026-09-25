@@ -180,6 +180,7 @@ export function yearsWord(lang: Lang, years: number): string {
 	const mod10 = years % 10;
 	const mod100 = years % 100;
 	if (mod10 === 1 && mod100 !== 11) return 'godinu';
-	if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return 'godine';
+	if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14))
+		return 'godine';
 	return 'godina';
 }

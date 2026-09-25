@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 type CommaListInputProps = {
-  value: string[];
-  onChange: (items: string[]) => void;
-  id?: string;
-  placeholder?: string;
-  className?: string;
+	value: string[];
+	onChange: (items: string[]) => void;
+	id?: string;
+	placeholder?: string;
+	className?: string;
 };
 
 function parse(raw: string): string[] {
-  return raw
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean);
+	return raw
+		.split(',')
+		.map((s) => s.trim())
+		.filter(Boolean);
 }
 
 /**
@@ -25,20 +25,26 @@ function parse(raw: string): string[] {
  * impossible to type past a comma. So this keeps its own raw text while
  * focused and only re-derives it from the (already-committed) array on blur.
  */
-export function CommaListInput({ value, onChange, id, placeholder, className }: CommaListInputProps) {
-  const [text, setText] = useState(() => value.join(", "));
+export function CommaListInput({
+	value,
+	onChange,
+	id,
+	placeholder,
+	className,
+}: CommaListInputProps) {
+	const [text, setText] = useState(() => value.join(', '));
 
-  return (
-    <input
-      id={id}
-      value={text}
-      placeholder={placeholder}
-      onChange={(e) => {
-        setText(e.target.value);
-        onChange(parse(e.target.value));
-      }}
-      onBlur={() => setText(value.join(", "))}
-      className={className}
-    />
-  );
+	return (
+		<input
+			id={id}
+			value={text}
+			placeholder={placeholder}
+			onChange={(e) => {
+				setText(e.target.value);
+				onChange(parse(e.target.value));
+			}}
+			onBlur={() => setText(value.join(', '))}
+			className={className}
+		/>
+	);
 }

@@ -71,6 +71,10 @@ const config: Config = {
 					'45%, 65%': { transform: 'rotateY(180deg)' },
 					'90%, 100%': { transform: 'rotateY(360deg)' },
 				},
+				marquee: {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(-50%)' },
+				},
 			},
 			animation: {
 				'rise-in': 'rise-in 0.9s cubic-bezier(0.16,1,0.3,1) both',
@@ -81,6 +85,7 @@ const config: Config = {
 				'node-pulse': 'node-pulse 7s ease-in-out infinite',
 				'float-in': 'float-in 1.25s cubic-bezier(0.16,1,0.3,1) both',
 				'card-flip': 'card-flip 14s ease-in-out infinite',
+				marquee: 'marquee 22s linear infinite',
 			},
 		},
 	},

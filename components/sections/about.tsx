@@ -49,12 +49,21 @@ export function About() {
 						</div>
 					</Reveal>
 					<Reveal index={2}>
-						<div className='flex flex-wrap gap-[7px]'>
+						<div className='hidden flex-wrap gap-[7px] md:flex'>
 							{TECH_STACK.map((tech) => (
 								<Pill key={tech} mono>
 									{tech}
 								</Pill>
 							))}
+						</div>
+						<div className='relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] md:hidden'>
+							<div className='flex w-max animate-marquee gap-[7px]'>
+								{[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
+									<Pill key={`${tech}-${i}`} mono className='whitespace-nowrap'>
+										{tech}
+									</Pill>
+								))}
+							</div>
 						</div>
 					</Reveal>
 				</div>

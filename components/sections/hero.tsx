@@ -14,7 +14,7 @@ export function Hero() {
 
 	return (
 		<Section id='top' variant='hero'>
-			<div className='pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-[88%] animate-wipe-up justify-center'>
+			<div className='pointer-events-none absolute inset-x-0 top-1/2 hidden -translate-y-[88%] animate-wipe-up justify-center md:flex'>
 				<div
 					ref={wordmarkRef}
 					className='flex gap-[0.14em] whitespace-nowrap font-display text-[clamp(56px,15.5vw,300px)] uppercase leading-[0.82] tracking-[-0.01em] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]'
@@ -27,7 +27,7 @@ export function Hero() {
 			</div>
 
 			<div
-				className='pointer-events-none absolute inset-x-0 bottom-0 flex animate-float-in items-end justify-center'
+				className='pointer-events-none absolute inset-x-0 bottom-0 hidden animate-float-in items-end justify-center md:flex'
 				style={{ animationDelay: '0.12s' }}
 			>
 				<Image
@@ -40,7 +40,7 @@ export function Hero() {
 				/>
 			</div>
 
-			<div className='relative z-[3] mx-auto flex w-full max-w-[1320px] items-end justify-between gap-[clamp(16px,4vw,60px)] pb-[clamp(22px,6vh,72px)]'>
+			<div className='relative z-[3] mx-auto hidden w-full max-w-[1320px] items-end justify-between gap-[clamp(16px,4vw,60px)] pb-[clamp(22px,6vh,72px)] md:flex'>
 				<div
 					className='max-w-[30ch] animate-rise-in'
 					style={{ animationDelay: '0.32s' }}
@@ -65,6 +65,51 @@ export function Hero() {
 							label={link.label}
 						/>
 					))}
+				</div>
+			</div>
+
+			{/* Mobile: name/role/tagline/CTA/social stack on top, portrait fills the remaining space below. */}
+			<div className='flex flex-1 flex-col md:hidden'>
+				<div className='animate-rise-in' style={{ animationDelay: '0.12s' }}>
+					<div className='flex flex-wrap gap-[0.1em] font-display text-[clamp(38px,12vw,64px)] uppercase leading-[0.88] tracking-[-0.01em]'>
+						<span className='text-transparent [-webkit-text-stroke:1.5px_var(--accent)]'>
+							Dejan
+						</span>
+						<span>Lukić</span>
+					</div>
+					<h1 className='mt-3 text-[17px] font-semibold tracking-[-0.01em]'>
+						{t.heroRole}
+					</h1>
+					<p className='mt-2 max-w-[34ch] text-[14px] leading-normal text-muted text-pretty'>
+						{t.heroLine}
+					</p>
+					<CtaLink href='#contact' className='mt-4'>
+						{t.heroCta}
+					</CtaLink>
+					<div className='mt-4 flex gap-2.5'>
+						{socialLinks.map((link) => (
+							<SocialPillLink
+								key={link.label}
+								href={link.href}
+								label={link.label}
+								className='flex-1 justify-center'
+							/>
+						))}
+					</div>
+				</div>
+
+				<div
+					className='relative mt-4 min-h-0 flex-1 animate-float-in'
+					style={{ animationDelay: '0.2s' }}
+				>
+					<Image
+						src='/portrait.png'
+						alt='Dejan Lukić'
+						width={1254}
+						height={1254}
+						priority
+						className='mx-auto h-full w-auto object-contain object-bottom grayscale contrast-[1.05]'
+					/>
 				</div>
 			</div>
 		</Section>

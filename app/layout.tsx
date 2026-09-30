@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Anton, Archivo } from 'next/font/google';
+import { Archivo, Poppins } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/components/common/language-provider';
 
-const anton = Anton({
-	subsets: ['latin'],
-	weight: '400',
-	variable: '--font-anton',
+const poppins = Poppins({
+	subsets: ['latin', 'latin-ext'],
+	weight: '800',
+	variable: '--font-poppins',
 });
 
 const archivo = Archivo({
@@ -28,7 +28,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${anton.variable} ${archivo.variable} font-sans text-ink`}
+				className={`${poppins.variable} ${archivo.variable} font-sans text-ink`}
 				suppressHydrationWarning
 			>
 				<LanguageProvider>{children}</LanguageProvider>

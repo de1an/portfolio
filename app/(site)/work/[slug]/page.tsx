@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Footer from '@/components/Footer';
 import { CaseStudyView } from '@/components/sections/case-study-view';
 import { getAdjacentProject, getProject, getProjects } from '@/lib/projects';
 
@@ -47,5 +48,10 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
 
 	const next = await getAdjacentProject(slug);
 
-	return <CaseStudyView project={project} next={next} />;
+	return (
+		<>
+			<CaseStudyView project={project} next={next} />
+			<Footer />
+		</>
+	);
 }

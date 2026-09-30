@@ -39,7 +39,7 @@ export function Experience() {
 						<AnimatedHeading
 							slash
 							text={t.expLabel}
-							className='font-display text-[clamp(24px,3.4vw,46px)] uppercase'
+							className='font-display text-[clamp(24px,3.4vw,46px)]'
 						/>
 						<span className='font-mono text-xs tracking-wide text-white/55'>
 							{t.expNote}

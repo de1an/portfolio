@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/common/language-provider';
+import { Logo } from '@/components/common/logo';
 import type { Lang } from '@/lib/i18n';
 
 export function Nav() {
@@ -30,9 +31,10 @@ export function Nav() {
 			>
 				<Link
 					href='/#top'
-					className='whitespace-nowrap font-display text-[clamp(15px,1.4vw,19px)] uppercase tracking-wide'
+					aria-label='Dejan Lukić'
+					className='flex items-center'
 				>
-					Dejan Lukić
+					<Logo className='h-[clamp(26px,2.4vw,34px)] w-auto' />
 				</Link>
 
 				<div className='flex items-center gap-[clamp(12px,2.2vw,30px)] text-[13px] uppercase tracking-wide'>

@@ -27,7 +27,7 @@ const config: Config = {
 				'card-4': 'var(--card-4)',
 			},
 			fontFamily: {
-				display: ['var(--font-anton)', 'Impact', 'sans-serif'],
+				display: ['var(--font-poppins)', 'Helvetica', 'Arial', 'sans-serif'],
 				sans: ['var(--font-archivo)', 'Helvetica', 'Arial', 'sans-serif'],
 				mono: ['Archivo Mono', 'monospace'],
 			},
@@ -37,8 +37,8 @@ const config: Config = {
 					to: { opacity: '1', transform: 'translateY(0)' },
 				},
 				'wipe-up': {
-					from: { clipPath: 'inset(100% 0 0 0)' },
-					to: { clipPath: 'inset(-25% 0 0 0)' },
+					from: { clipPath: 'inset(100% 0 -25% 0)' },
+					to: { clipPath: 'inset(-25% 0 -25% 0)' },
 				},
 				'grid-drift': {
 					from: { transform: 'translate3d(0,0,0)' },

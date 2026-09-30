@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
 
 	return (
 		<div className='mx-auto flex min-h-[70vh] max-w-sm flex-col justify-center'>
-			<h1 className='mb-6 font-display text-2xl uppercase'>Admin</h1>
+			<h1 className='mb-6 font-display text-2xl'>Admin</h1>
 			<form onSubmit={handleSubmit} className='space-y-4'>
 				<div>
 					<label htmlFor='email' className='mb-1 block text-sm text-muted'>

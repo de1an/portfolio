@@ -10,7 +10,7 @@ type AnimatedHeadingProps = {
 };
 
 /**
- * Section heading that reveals word-by-word (each word clipped and slid up)
+ * Section heading that reveals word-by-word (each word clipped and slid up; the clip box is padded so descenders and accents stay visible)
  * the first time it scrolls into view.
  */
 export function AnimatedHeading({
@@ -55,11 +55,11 @@ export function AnimatedHeading({
 			{slash && <span className='text-accent'>/</span>}
 			{words.map((word, i) => (
 				<span key={`${word}-${i}`}>
-					<span className='inline-block overflow-hidden align-bottom'>
+					<span className='-my-[0.2em] inline-block overflow-hidden py-[0.2em] align-bottom'>
 						<span
 							className='inline-block transition-transform duration-[850ms] ease-[cubic-bezier(0.16,1,0.3,1)]'
 							style={{
-								transform: revealed ? 'translateY(0)' : 'translateY(105%)',
+								transform: revealed ? 'translateY(0)' : 'translateY(130%)',
 								transitionDelay: `${i * 70}ms`,
 							}}
 						>

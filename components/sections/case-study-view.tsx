@@ -18,7 +18,7 @@ const STATUS_KEY: Record<ProjectStatus, StringKey> = {
 	archived: 'statusArchived',
 };
 
-const HEADING = 'font-display text-[clamp(26px,3.6vw,44px)] uppercase';
+const HEADING = 'font-display text-[clamp(26px,3.6vw,44px)]';
 
 export function CaseStudyView({
 	project,
@@ -68,7 +68,7 @@ export function CaseStudyView({
 							<div className='mb-2 font-mono text-[11px] uppercase tracking-wide text-faint'>
 								{t[project.typeKey]}
 							</div>
-							<h1 className='font-display text-[clamp(32px,6vw,76px)] uppercase leading-[1.02]'>
+							<h1 className='font-display text-[clamp(32px,6vw,76px)] leading-[1.12]'>
 								{project.title}
 							</h1>
 							<p className='mt-4 max-w-[62ch] text-[clamp(16px,1.6vw,20px)] leading-[1.5] text-muted text-pretty'>
@@ -373,7 +373,7 @@ export function CaseStudyView({
 							<div className='font-mono text-[11px] uppercase tracking-wide text-faint'>
 								{t.csNext}
 							</div>
-							<div className='mt-1.5 font-display text-[clamp(24px,3.4vw,40px)] uppercase transition-transform group-hover:translate-x-1.5'>
+							<div className='mt-1.5 font-display text-[clamp(24px,3.4vw,40px)] transition-transform group-hover:translate-x-1.5'>
 								{next.title} <span aria-hidden='true'>→</span>
 							</div>
 						</Link>

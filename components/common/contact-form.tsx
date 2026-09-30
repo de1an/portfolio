@@ -39,7 +39,7 @@ export function ContactForm() {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className='mx-auto mt-[clamp(28px,5vh,60px)] flex w-full max-w-[480px] flex-col gap-4 text-left'
+			className='mx-auto mt-[clamp(16px,3vh,28px)] flex w-full max-w-[480px] flex-col gap-[clamp(10px,1.8vh,16px)] text-left'
 		>
 			<Field id='contact-name' name='name' label={t.contactFormName} required />
 			<Field
@@ -106,7 +106,7 @@ function Field({
 					id={id}
 					name={name}
 					required={required}
-					rows={4}
+					rows={3}
 					className={fieldClassName}
 				/>
 			) : (

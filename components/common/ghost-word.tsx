@@ -40,7 +40,7 @@ export function GhostWord({
 		<span
 			ref={ref}
 			aria-hidden='true'
-			className={`pointer-events-none absolute whitespace-nowrap font-display uppercase leading-none ${colorClassName} ${className ?? ''}`}
+			className={`pointer-events-none absolute whitespace-nowrap font-display leading-none ${colorClassName} ${className ?? ''}`}
 		>
 			{text}
 		</span>

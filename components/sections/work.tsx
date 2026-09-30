@@ -37,7 +37,7 @@ export function Work({ projects }: { projects: Project[] }) {
 							<AnimatedHeading
 								slash
 								text={t.workLabel}
-								className='relative font-display text-[clamp(28px,4.2vw,56px)] uppercase'
+								className='relative font-display text-[clamp(28px,4.2vw,56px)]'
 							/>
 						</Reveal>
 					</div>

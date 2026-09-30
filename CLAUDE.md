@@ -19,8 +19,8 @@ Copy `.env.example` to `.env.local` and fill in a Supabase project's URL/publish
 
 Next.js App Router project (TypeScript, Tailwind CSS) — a single-page, snap-scrolling personal site (Hero/Service/About/Work/Experience/Contact) plus per-project case study pages and a Supabase-backed admin panel for managing project content.
 
-- `app/layout.tsx` — root layout; only `<html>`/`<body>`, fonts (`next/font` Anton + Archivo), `globals.css`, and `LanguageProvider`. No page chrome here — that's per route group.
-- `app/(site)/layout.tsx` — chrome shared by the public site: `CustomCursor`, `AmbientBackground`, `Nav`, `<main>`, `Footer`.
+- `app/layout.tsx` — root layout; only `<html>`/`<body>`, fonts (`next/font` Poppins ExtraBold for display headings + Archivo), `globals.css`, and `LanguageProvider`. No page chrome here — that's per route group.
+- `app/(site)/layout.tsx` — chrome shared by the public site: `CustomCursor`, `AmbientBackground`, `Nav`, `<main>`. `Footer` is **not** here: on the home page it renders inside the Contact section (so that section plus footer is exactly 100vh, no extra scroll below), and the case study page renders it itself.
 - `app/(site)/page.tsx` — the home page. Async server component; fetches `getProjects()` and renders the six sections in order, plus `ScrollSnapController` and `SectionDotRail` (mounted here, not in the layout, so they only apply to this one page).
 - `app/(site)/work/[slug]/page.tsx` — case study page for one project. Statically generated (`generateStaticParams`, `revalidate = 3600`, `dynamicParams = true`) for every published project that has a case study; `notFound()` otherwise. Renders `components/sections/case-study-view.tsx`.
 - `app/(admin)/layout.tsx` + `app/(admin)/admin/**` — the admin panel (login, project list, new/edit forms). No site chrome. Protected by `middleware.ts`.

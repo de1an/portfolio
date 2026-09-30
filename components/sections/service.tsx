@@ -23,7 +23,7 @@ export function Service() {
 						<AnimatedHeading
 							slash
 							text={t.serviceHeadline}
-							className='relative font-display text-[clamp(28px,3.9vw,52px)] uppercase leading-[1.04]'
+							className='relative font-display text-[clamp(28px,3.9vw,52px)] leading-[1.15]'
 						/>
 					</Reveal>
 					<Reveal index={1}>

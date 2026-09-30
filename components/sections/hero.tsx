@@ -17,7 +17,7 @@ export function Hero() {
 			<div className='pointer-events-none absolute inset-x-0 top-1/2 hidden -translate-y-[88%] animate-wipe-up justify-center md:flex'>
 				<div
 					ref={wordmarkRef}
-					className='flex gap-[0.14em] whitespace-nowrap font-display text-[clamp(56px,15.5vw,300px)] uppercase leading-[0.82] tracking-[-0.01em] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]'
+					className='flex gap-[0.14em] whitespace-nowrap font-display text-[clamp(48px,12vw,230px)] leading-[0.82] tracking-[-0.01em] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]'
 				>
 					<span className='text-transparent [-webkit-text-stroke:clamp(1px,0.22vw,4px)_var(--accent)]'>
 						Dejan
@@ -71,7 +71,7 @@ export function Hero() {
 			{/* Mobile: name/role/tagline/CTA/social stack on top, portrait fills the remaining space below. */}
 			<div className='flex flex-1 flex-col md:hidden'>
 				<div className='animate-rise-in' style={{ animationDelay: '0.12s' }}>
-					<div className='flex flex-wrap gap-[0.1em] font-display text-[clamp(38px,12vw,64px)] uppercase leading-[0.88] tracking-[-0.01em]'>
+					<div className='flex flex-wrap gap-[0.1em] font-display text-[clamp(38px,12vw,64px)] leading-[1] tracking-[-0.01em]'>
 						<span className='text-transparent [-webkit-text-stroke:1.5px_var(--accent)]'>
 							Dejan
 						</span>

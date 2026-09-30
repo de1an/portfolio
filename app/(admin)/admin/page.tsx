@@ -9,7 +9,7 @@ export default async function AdminPage() {
 	return (
 		<div className='mx-auto max-w-5xl'>
 			<div className='mb-8 flex flex-wrap items-center justify-between gap-4'>
-				<h1 className='font-display text-2xl uppercase'>Projects</h1>
+				<h1 className='font-display text-2xl'>Projects</h1>
 				<div className='flex items-center gap-4'>
 					<Link
 						href='/admin/projects/new'

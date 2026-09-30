@@ -17,7 +17,7 @@ export const STRINGS = {
 		aboutP1Rest:
 			'of experience developing and delivering web software. I started my career as a freelancer in 2020, gaining hands-on experience by working on real-world projects, while joining Konis Software in 2023 gave me the opportunity to work on complex systems used by companies in their day-to-day operations.',
 		aboutP2:
-			'Most of my work is internal: CRMs, ERPs and admin tools nobody sees from outside but hundreds of people use every day. That work leaves no room for decoration — it has to be fast, obvious and hard to break. I like it that way.',
+			'Most of my work is internal: CRMs and admin tools nobody sees from outside but hundreds of people use every day. That work leaves no room for decoration — it has to be fast, obvious and hard to break. I like it that way.',
 		sinceLabel: 'Writing production code since',
 		sinceValue: '2020',
 		sinceNote:
@@ -39,10 +39,9 @@ export const STRINGS = {
 		expFree:
 			'Three years on my own — websites and first web apps for local businesses, code through hosting and support.',
 		expKonis:
-			'Internal platforms for the Compass group and other clients: CRM, ERP and admin systems in daily use.',
+			'Internal platforms for the Compass group and other clients: CRM and admin systems in daily use.',
 		contactHeading: 'Have a project in mind?',
-		contactSub:
-			"If you need a system built properly the first time, I'm the one to call. Tell me what it has to do.",
+		contactSub: "Share your idea with me — I can't wait to bring it to life.",
 		contactFormName: 'Name',
 		contactFormEmail: 'Email',
 		contactFormMessage: 'What do you need?',
@@ -88,13 +87,13 @@ export const STRINGS = {
 		serviceIntro:
 			'Dizajniram i razvijam moderne website-ove i web aplikacije — od prve ideje i korisničkog interfejsa do backend sistema, integracija i lansiranja.',
 		serviceCtaLead: 'Imate ideju za digitalni proizvod?',
-		serviceCta: 'Hajde da je izgradim',
+		serviceCta: 'Hajde da je napravimo',
 		aboutLabel: 'O meni',
 		stackLabel: 'Tehnologije',
 		aboutP1Rest:
 			'iskustva u razvoju i isporuci veb softvera. Karijeru sam započeo kao freelancer 2020. godine, gradeći praktično iskustvo kroz rad na realnim projektima, dok mi je prelazak u Konis Software 2023. doneo iskustvo rada na ozbiljnim sistemima koje kompanije svakodnevno koriste.',
 		aboutP2:
-			'Najveći deo mog rada je interni: CRM, ERP i administratorski alati koje spolja nikada ne vidite, ali ih stotine ljudi koriste svakog dana.',
+			'Najveći deo mog rada je interni: CRM i administratorski alati koje spolja nikada ne vidite, ali ih stotine ljudi koriste svakog dana.',
 		sinceLabel: 'Strukovni inženjer informacionih tehnologija i sistema od',
 		sinceValue: '2020',
 		sinceNote:
@@ -115,10 +114,9 @@ export const STRINGS = {
 		expFree:
 			'Tri godine samostalno — sajtovi i prve veb aplikacije za lokalne firme, od koda do hostinga i podrške.',
 		expKonis:
-			'Interne platforme za Compass grupu i druge klijente: CRM, ERP i administratorski sistemi u svakodnevnoj upotrebi.',
+			'Interne platforme za Compass grupu i druge klijente: CRM i administratorski sistemi u svakodnevnoj upotrebi.',
 		contactHeading: 'Imate projekat na umu?',
-		contactSub:
-			'Ako vam treba sistem napravljen kako treba iz prvog puta, tu sam. Recite mi šta treba da radi.',
+		contactSub: 'Podelite ideju sa mnom, jedva čekam da je oživimo.',
 		contactFormName: 'Ime',
 		contactFormEmail: 'Email',
 		contactFormMessage: 'Šta vam je potrebno?',

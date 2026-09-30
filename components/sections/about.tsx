@@ -40,7 +40,7 @@ export function About() {
 						<AnimatedHeading
 							slash
 							text={t.aboutLabel}
-							className='mb-[18px] font-display text-[clamp(28px,4.2vw,56px)] uppercase'
+							className='mb-[18px] font-display text-[clamp(28px,4.2vw,56px)]'
 						/>
 					</Reveal>
 					<Reveal index={1}>

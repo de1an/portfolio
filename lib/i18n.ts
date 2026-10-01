@@ -2,7 +2,7 @@ export type Lang = 'en' | 'sr';
 
 export const STRINGS = {
 	en: {
-		heroRole: 'Software Developer',
+		heroRole: 'Web Developer',
 		heroLine: 'Digital solutions that make a difference',
 		heroCta: "Let's collaborate",
 		serviceLabel: 'Service',
@@ -49,7 +49,7 @@ export const STRINGS = {
 		contactFormSending: 'Sending…',
 		contactFormSuccess: "Thanks — I'll get back to you soon.",
 		contactFormError: 'Something went wrong. Try emailing me directly.',
-		footerRight: 'Software Developer — Available for work',
+		footerRight: 'Web Developer — Available for work',
 		csBack: 'Work',
 		csOverview: 'Overview',
 		csResults: 'Results',
@@ -78,7 +78,7 @@ export const STRINGS = {
 		dotContact: 'Contact',
 	},
 	sr: {
-		heroRole: 'Software Developer',
+		heroRole: 'Web Developer',
 		heroLine: 'Digitalna rešenja koja prave razliku',
 		heroCta: 'Kontaktiraj me',
 		serviceLabel: 'Usluge',
@@ -124,7 +124,7 @@ export const STRINGS = {
 		contactFormSending: 'Slanje…',
 		contactFormSuccess: 'Hvala — javiću vam se uskoro.',
 		contactFormError: 'Nešto nije uspelo. Pokušajte direktno preko emaila.',
-		footerRight: 'Software Developer — Dostupan za saradnju',
+		footerRight: 'Web Developer — Dostupan za saradnju',
 		csBack: 'Radovi',
 		csOverview: 'Pregled',
 		csResults: 'Rezultati',

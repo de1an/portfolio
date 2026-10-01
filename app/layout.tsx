@@ -16,7 +16,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-	title: 'Dejan Lukić — Software Developer',
+	title: 'Dejan Lukić — Web Developer',
 	description: 'Digital solutions that make a difference.',
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
+		<html lang='sr'>
 			<body
 				className={`${poppins.variable} ${archivo.variable} font-sans text-ink`}
 				suppressHydrationWarning

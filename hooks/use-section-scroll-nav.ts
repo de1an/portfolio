@@ -6,7 +6,8 @@ import { useEffect } from 'react';
  * One-section-per-scroll navigation: mouse wheel / ArrowUp+Down / PageUp+Down
  * each move exactly one section, with a lock to prevent overshoot. Wheel
  * events over a [data-rail] element scroll it horizontally instead, until
- * it hits an edge. CSS scroll-snap is the fallback for trackpad/touch.
+ * it hits an edge. CSS scroll-snap is the fallback for trackpad/touch on
+ * tablet+ (globals.css); phones get plain free scroll.
  */
 export function useSectionScrollNav(ids: string[]) {
 	useEffect(() => {

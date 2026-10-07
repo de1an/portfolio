@@ -2,20 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { LaptopFrame } from '@/components/common/laptop-frame';
 import { useLanguage } from '@/components/common/language-provider';
 import { pick, type Project } from '@/lib/project-schema';
-
-const FALLBACK_COVER_RATIO = 4 / 3;
-
-/**
- * The card's image box always matches the cover's real aspect ratio — any
- * clamping would make the box narrower/wider than the source image, and
- * object-cover would then crop it to fit instead of showing it in full.
- */
-function coverRatio(project: Project): number {
-	if (!project.cover) return FALLBACK_COVER_RATIO;
-	return project.cover.width / project.cover.height;
-}
 
 /** Every project has a /work/[slug] page — a full case study when one is filled in, a lighter overview otherwise. */
 function ProjectCardShell({
@@ -39,31 +28,30 @@ export function ProjectCard({ project }: { project: Project }) {
 	const { t, lang } = useLanguage();
 	return (
 		<ProjectCardShell project={project}>
-			<div
-				className='relative flex items-center justify-center overflow-hidden rounded-xl bg-card-2'
-				style={{ aspectRatio: coverRatio(project) }}
-			>
-				{project.cover ? (
-					<Image
-						src={project.cover.src}
-						alt={pick(project.cover.alt, lang)}
-						width={project.cover.width}
-						height={project.cover.height}
-						className='h-full w-full object-cover'
-					/>
-				) : (
-					<div
-						className='flex h-full w-full items-center justify-center'
-						style={{
-							background:
-								'repeating-linear-gradient(135deg, var(--card-4) 0 9px, var(--card-2) 9px 18px)',
-						}}
-					>
-						<span className='font-mono text-[11px] uppercase tracking-wide text-faint'>
-							{project.title}
-						</span>
-					</div>
-				)}
+			<div className='px-[clamp(6px,1.4vw,14px)] pb-2 pt-[clamp(14px,2vw,22px)]'>
+				<LaptopFrame>
+					{project.cover ? (
+						<Image
+							src={project.cover.src}
+							alt={pick(project.cover.alt, lang)}
+							fill
+							sizes='(max-width: 640px) 80vw, 340px'
+							className='object-cover object-left-top'
+						/>
+					) : (
+						<div
+							className='flex h-full w-full items-center justify-center'
+							style={{
+								background:
+									'repeating-linear-gradient(135deg, var(--card-4) 0 9px, var(--card-2) 9px 18px)',
+							}}
+						>
+							<span className='font-mono text-[10px] uppercase tracking-wide text-faint'>
+								{project.title}
+							</span>
+						</div>
+					)}
+				</LaptopFrame>
 			</div>
 			<div className='flex flex-1 flex-col px-[7px] pb-1.5 pt-4'>
 				<div className='text-lg font-semibold tracking-[-0.01em]'>

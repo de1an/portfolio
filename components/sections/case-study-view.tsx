@@ -9,6 +9,8 @@ import { Reveal } from '@/components/common/reveal';
 import { Pill } from '@/components/common/pill';
 import { CtaLink } from '@/components/common/cta-link';
 import { CaseStudySection } from '@/components/common/case-study-section';
+import { LaptopFrame } from '@/components/common/laptop-frame';
+import { CaseStudyGallery } from '@/components/sections/case-study-gallery';
 import { pick, type Project, type ProjectStatus } from '@/lib/project-schema';
 import type { StringKey } from '@/lib/i18n';
 
@@ -103,29 +105,33 @@ export function CaseStudyView({
 
 			<CaseStudySection noBorder className='pt-0'>
 				<Reveal index={0}>
-					<div className='relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-[24px] bg-card-2'>
-						{project.cover ? (
-							<Image
-								src={project.cover.src}
-								alt={pick(project.cover.alt, lang)}
-								width={project.cover.width}
-								height={project.cover.height}
-								className='h-full w-full object-contain'
-								priority
-							/>
-						) : (
-							<div
-								className='flex h-full w-full items-center justify-center'
-								style={{
-									background:
-										'repeating-linear-gradient(135deg, var(--card-4) 0 9px, var(--card-2) 9px 18px)',
-								}}
-							>
-								<span className='font-mono text-[11px] uppercase tracking-wide text-faint'>
-									{project.title}
-								</span>
-							</div>
-						)}
+					<div className='py-[clamp(8px,2vw,24px)]'>
+						<LaptopFrame>
+							{project.cover ? (
+								<Image
+									src={project.cover.src}
+									alt={pick(project.cover.alt, lang)}
+									fill
+									sizes='(max-width: 900px) 90vw, 760px'
+									// Covers are meant to be 16:10 (e.g. 1440×900) and fill the screen
+									// exactly; anything wider keeps its top-left (logo + nav).
+									className='object-cover object-left-top'
+									priority
+								/>
+							) : (
+								<div
+									className='flex h-full w-full items-center justify-center'
+									style={{
+										background:
+											'repeating-linear-gradient(135deg, var(--card-4) 0 9px, var(--card-2) 9px 18px)',
+									}}
+								>
+									<span className='font-mono text-[11px] uppercase tracking-wide text-faint'>
+										{project.title}
+									</span>
+								</div>
+							)}
+						</LaptopFrame>
 					</div>
 				</Reveal>
 			</CaseStudySection>
@@ -329,32 +335,9 @@ export function CaseStudyView({
 							className={`mb-8 ${HEADING}`}
 						/>
 					</Reveal>
-					<div className='grid gap-4 sm:grid-cols-2'>
-						{cs.gallery.map((img, i) => (
-							<Reveal
-								key={i}
-								index={i + 1}
-								className={i === 0 ? 'sm:col-span-2' : ''}
-							>
-								<figure>
-									<div className='relative overflow-hidden rounded-2xl'>
-										<Image
-											src={img.src}
-											alt={pick(img.alt, lang)}
-											width={img.width}
-											height={img.height}
-											className='w-full object-cover'
-										/>
-									</div>
-									{img.caption && (
-										<figcaption className='mt-2 text-sm text-muted'>
-											{pick(img.caption, lang)}
-										</figcaption>
-									)}
-								</figure>
-							</Reveal>
-						))}
-					</div>
+					<Reveal index={1}>
+						<CaseStudyGallery images={cs.gallery} />
+					</Reveal>
 				</CaseStudySection>
 			)}
 

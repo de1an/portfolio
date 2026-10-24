@@ -93,7 +93,7 @@ export function CaseStudyView({
 							))}
 							{cs.url && (
 								<div className='ml-auto'>
-									<CtaLink href={cs.url} size='sm'>
+									<CtaLink href={cs.url} size='sm' trackId='case_study_visit'>
 										{t.csVisit}
 									</CtaLink>
 								</div>
@@ -363,7 +363,9 @@ export function CaseStudyView({
 					) : (
 						<span />
 					)}
-					<CtaLink href='/#contact'>{t.heroCta}</CtaLink>
+					<CtaLink href='/#contact' trackId='case_study_footer'>
+						{t.heroCta}
+					</CtaLink>
 				</div>
 			</CaseStudySection>
 		</>

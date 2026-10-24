@@ -51,7 +51,9 @@ export function Hero() {
 					<p className='mb-5 max-w-[26ch] text-[15px] leading-normal text-muted text-pretty'>
 						{t.heroLine}
 					</p>
-					<CtaLink href='#contact'>{t.heroCta}</CtaLink>
+					<CtaLink href='#contact' trackId='hero'>
+						{t.heroCta}
+					</CtaLink>
 				</div>
 
 				<div
@@ -83,7 +85,7 @@ export function Hero() {
 					<p className='mt-2 max-w-[34ch] text-[14px] leading-normal text-muted text-pretty'>
 						{t.heroLine}
 					</p>
-					<CtaLink href='#contact' className='mt-4'>
+					<CtaLink href='#contact' trackId='hero' className='mt-4'>
 						{t.heroCta}
 					</CtaLink>
 					<div className='mt-4 flex gap-2.5'>

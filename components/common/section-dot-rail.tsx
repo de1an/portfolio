@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/common/language-provider';
 import { useActiveSection } from '@/hooks/use-active-section';
 import { SECTIONS } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 const IDS = SECTIONS.map((s) => s.id);
 
@@ -13,6 +14,14 @@ export function SectionDotRail() {
 	const { t } = useLanguage();
 	const active = useActiveSection(IDS);
 	const [hovered, setHovered] = useState<string | null>(null);
+
+	// One `section_view` per section per page load — scrolling back and forth isn't re-counted.
+	const seen = useRef(new Set<string>());
+	useEffect(() => {
+		if (seen.current.has(active)) return;
+		seen.current.add(active);
+		trackEvent('section_view', { section: active });
+	}, [active]);
 
 	return (
 		<div className='fixed left-[clamp(10px,1.6vw,26px)] top-1/2 z-[45] hidden -translate-y-1/2 flex-col gap-1 sm:flex'>

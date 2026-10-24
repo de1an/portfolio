@@ -5,10 +5,16 @@ import Link from 'next/link';
 import { useLanguage } from '@/components/common/language-provider';
 import { Logo } from '@/components/common/logo';
 import type { Lang } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 export function Nav() {
 	const { lang, setLang } = useLanguage();
 	const [scrolled, setScrolled] = useState(false);
+
+	const changeLang = (next: Lang) => {
+		if (next !== lang) trackEvent('language_change', { language: next });
+		setLang(next);
+	};
 
 	useEffect(() => {
 		const onScroll = () =>
@@ -39,12 +45,26 @@ export function Nav() {
 
 				<div className='flex items-center gap-[clamp(12px,2.2vw,30px)] text-[13px] uppercase tracking-wide'>
 					<div className='flex items-center gap-0.5 rounded-full border border-ink/[0.14] p-1 font-mono text-[11px] tracking-wide'>
-						<LangButton lang='en' active={lang === 'en'} onSelect={setLang} />
-						<LangButton lang='sr' active={lang === 'sr'} onSelect={setLang} />
+						<LangButton
+							lang='en'
+							active={lang === 'en'}
+							onSelect={changeLang}
+						/>
+						<LangButton
+							lang='sr'
+							active={lang === 'sr'}
+							onSelect={changeLang}
+						/>
 					</div>
 
 					<Link
 						href='mailto:dejan.lukic98@gmail.com'
+						onClick={() =>
+							trackEvent('email_click', {
+								link_label: 'Email',
+								link_location: 'nav',
+							})
+						}
 						className='hidden items-center gap-2 whitespace-nowrap rounded-full bg-ink px-5 py-2.5 font-medium normal-case text-bg transition-colors hover:bg-muted-2 md:flex'
 					>
 						dejan.lukic98@gmail.com

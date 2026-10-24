@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { useLanguage } from '@/components/common/language-provider';
+import { trackEvent } from '@/lib/analytics';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -30,6 +31,7 @@ export function ContactForm() {
 			});
 			if (!res.ok) throw new Error('Request failed');
 			setStatus('success');
+			trackEvent('generate_lead', { form: 'contact' });
 			form.reset();
 		} catch {
 			setStatus('error');

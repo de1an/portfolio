@@ -36,7 +36,9 @@ export function Service() {
 							<p className='mb-4 max-w-[32ch] text-[15px] leading-snug text-muted-2 text-pretty'>
 								{t.serviceCtaLead}
 							</p>
-							<CtaLink href='#contact'>{t.serviceCta}</CtaLink>
+							<CtaLink href='#contact' trackId='service'>
+								{t.serviceCta}
+							</CtaLink>
 						</div>
 					</Reveal>
 				</div>

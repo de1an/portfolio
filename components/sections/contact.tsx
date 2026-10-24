@@ -9,6 +9,7 @@ import { Reveal } from '@/components/common/reveal';
 import { Section } from '@/components/common/section';
 import Footer from '@/components/Footer';
 import { socialLinks } from '@/lib/social-links';
+import { trackEvent } from '@/lib/analytics';
 
 export function Contact() {
 	const { t } = useLanguage();
@@ -45,6 +46,12 @@ export function Contact() {
 								href={link.href}
 								target='_blank'
 								rel='noopener noreferrer'
+								onClick={() =>
+									trackEvent('social_click', {
+										link_label: link.label,
+										link_location: 'contact',
+									})
+								}
 								className='rounded-full border border-ink/[0.11] bg-card px-[18px] py-[11px] text-[13px] transition-colors hover:bg-card-3'
 							>
 								{link.label}

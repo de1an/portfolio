@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/components/common/language-provider';
+import { openConsentSettings } from '@/lib/analytics';
 
 /** `embedded` drops the footer's own horizontal padding, for when it sits inside a padded section. */
 export default function Footer({ embedded }: { embedded?: boolean }) {
@@ -20,7 +22,19 @@ export default function Footer({ embedded }: { embedded?: boolean }) {
 					embedded ? 'pt-4' : 'pt-5'
 				}`}
 			>
-				<span>© {year} Dejan Lukić</span>
+				<div className='flex flex-wrap items-center gap-x-4 gap-y-1'>
+					<span>© {year} Dejan Lukić</span>
+					<Link href='/privatnost' className='transition-colors hover:text-ink'>
+						{t.footerPrivacy}
+					</Link>
+					<button
+						type='button'
+						onClick={openConsentSettings}
+						className='uppercase tracking-wide transition-colors hover:text-ink'
+					>
+						{t.footerCookies}
+					</button>
+				</div>
 				<span>{t.footerRight}</span>
 			</div>
 		</div>

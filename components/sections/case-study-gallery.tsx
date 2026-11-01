@@ -112,6 +112,9 @@ function Lightbox({
 	);
 	const moved = useRef(false);
 	const [dragging, setDragging] = useState(false);
+	// Active touch/mouse pointers, so two fingers can pinch-zoom.
+	const pointers = useRef(new Map<number, { x: number; y: number }>());
+	const pinch = useRef<{ dist: number; zoom: number } | null>(null);
 
 	const img = images[index];
 	const hasMany = images.length > 1;
@@ -158,15 +161,36 @@ function Lightbox({
 		};
 	}, []);
 
+	const pinchDistance = () => {
+		const [a, b] = [...pointers.current.values()];
+		return Math.hypot(a.x - b.x, a.y - b.y) || 1;
+	};
+
 	const onPointerDown = (e: React.PointerEvent) => {
+		pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+		e.currentTarget.setPointerCapture(e.pointerId);
+		if (pointers.current.size === 2) {
+			// Second finger down: switch from panning to pinch-zooming.
+			pinch.current = { dist: pinchDistance(), zoom };
+			drag.current = null;
+			moved.current = true;
+			setDragging(true);
+			return;
+		}
 		moved.current = false;
 		if (zoom === 1) return;
-		e.currentTarget.setPointerCapture(e.pointerId);
 		drag.current = { x: e.clientX, y: e.clientY, ox: offset.x, oy: offset.y };
 		setDragging(true);
 	};
 
 	const onPointerMove = (e: React.PointerEvent) => {
+		if (!pointers.current.has(e.pointerId)) return;
+		pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+		const p = pinch.current;
+		if (p && pointers.current.size === 2) {
+			changeZoom((p.zoom * pinchDistance()) / p.dist);
+			return;
+		}
 		const d = drag.current;
 		if (!d) return;
 		const dx = e.clientX - d.x;
@@ -176,7 +200,9 @@ function Lightbox({
 		setOffset({ x: d.ox + dx / zoom, y: d.oy + dy / zoom });
 	};
 
-	const onPointerUp = () => {
+	const onPointerUp = (e: React.PointerEvent) => {
+		pointers.current.delete(e.pointerId);
+		pinch.current = null;
 		drag.current = null;
 		setDragging(false);
 	};
@@ -241,7 +267,8 @@ function Lightbox({
 			</div>
 
 			<div
-				className='relative flex min-h-0 flex-1 items-center justify-center overflow-hidden px-[clamp(12px,6vw,96px)]'
+				// touch-none: a pinch here must zoom the image, not the page behind the dialog.
+				className='relative flex min-h-0 flex-1 touch-none items-center justify-center overflow-hidden px-[clamp(12px,6vw,96px)]'
 				onClick={(e) => {
 					// Clicking the dimmed area (not the image) closes.
 					if (e.target === e.currentTarget) onClose();

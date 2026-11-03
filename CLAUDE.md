@@ -59,7 +59,11 @@ Tailwind CSS utility classes throughout, no CSS modules or styled-components. Da
 
 ## Known gaps / intentional stubs
 
-- The contact form sends email via Resend (`app/api/contact/route.ts`) — requires `RESEND_API_KEY` and `ADMIN_EMAIL` in env; without a verified sending domain it falls back to Resend's shared `onboarding@resend.dev` sender (fine for delivery to you, but set `CONTACT_FROM_EMAIL` once a domain is verified).
+- The contact form and the floating chat (`components/common/chat-widget.tsx`, mounted in `app/(site)/layout.tsx`) both POST to `app/api/contact/route.ts`, which forwards every message to each configured channel and succeeds if at least one delivered:
+  - **Email via Resend** — requires `RESEND_API_KEY` and `ADMIN_EMAIL`; without a verified sending domain it falls back to Resend's shared `onboarding@resend.dev` sender (fine for delivery to you, but set `CONTACT_FROM_EMAIL` once a domain is verified).
+  - **Telegram** (instant push to the phone) — requires `TELEGRAM_BOT_TOKEN` (from @BotFather) and `TELEGRAM_CHAT_ID` (send the bot any message, then read `message.chat.id` from `https://api.telegram.org/bot<TOKEN>/getUpdates`). Sent as plain text, so visitor input needs no escaping.
+  - The chat accepts an email **or** a phone number as the contact; the form only an email. A hidden `website` honeypot field silently drops bot submissions.
+  - `Footer` carries `data-site-footer` so the chat button can slide up while the footer is on screen.
 - Only `compass-holding` has a complete case study; the other 8 seeded projects have a summary but no `has_case_study` — their cards render but aren't links until filled in via `/admin`.
 - No project has real screenshots yet — `cover`/`gallery` are optional and the UI falls back to a placeholder block.
 - Not yet connected to a GitHub remote or a Vercel project — deployment to Vercel (and setting the same env vars there) is a manual follow-up.

@@ -11,6 +11,7 @@ export default function Footer({ embedded }: { embedded?: boolean }) {
 
 	return (
 		<div
+			data-site-footer
 			className={`relative z-[1] w-full ${
 				embedded
 					? 'pb-[clamp(16px,3vh,28px)]'

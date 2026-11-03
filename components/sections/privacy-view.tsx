@@ -69,17 +69,17 @@ const CONTENT: Record<
 				],
 			},
 			{
-				heading: 'Kontakt forma',
+				heading: 'Kontakt forma i chat',
 				blocks: [
 					{
 						type: 'p',
-						text: 'Kada pošaljete poruku preko kontakt forme, prikupljam ime, email adresu i tekst poruke koje ste uneli. Koristim ih isključivo da bih odgovorio na vaš upit i eventualno dogovorio saradnju.',
+						text: 'Kada pošaljete poruku preko kontakt forme ili chat prozora, prikupljam ime, email adresu ili broj telefona i tekst poruke koje ste uneli. Koristim ih isključivo da bih odgovorio na vaš upit i eventualno dogovorio saradnju.',
 					},
 					{
 						type: 'list',
 						items: [
 							'Pravni osnov: preduzimanje radnji na vaš zahtev i moj legitimni interes da odgovorim na upit.',
-							'Poruka se ne čuva u bazi podataka na sajtu — prosleđuje se na moj email putem servisa Resend (Resend, Inc.).',
+							'Poruka se ne čuva u bazi podataka na sajtu — prosleđuje se na moj email putem servisa Resend (Resend, Inc.) i na moj Telegram nalog putem servisa Telegram (Telegram Messenger Inc.).',
 							'Podatke čuvam dok traje komunikacija i eventualna saradnja, a brišem ih na vaš zahtev ili kada više nisu potrebni.',
 						],
 					},
@@ -127,7 +127,7 @@ const CONTENT: Record<
 				blocks: [
 					{
 						type: 'p',
-						text: 'Google, Vercel i Resend mogu obrađivati podatke i van Srbije i EU, uključujući SAD. Ovi pružaoci usluga obezbeđuju odgovarajuće mere zaštite, kao što su standardne ugovorne klauzule.',
+						text: 'Google, Vercel, Resend i Telegram mogu obrađivati podatke i van Srbije i EU, uključujući SAD i Ujedinjene Arapske Emirate. Ovi pružaoci usluga obezbeđuju odgovarajuće mere zaštite, kao što su standardne ugovorne klauzule.',
 					},
 				],
 			},
@@ -205,17 +205,17 @@ const CONTENT: Record<
 				],
 			},
 			{
-				heading: 'Contact form',
+				heading: 'Contact form and chat',
 				blocks: [
 					{
 						type: 'p',
-						text: 'When you send a message through the contact form, I collect the name, email address and message you entered. I use them only to reply to your enquiry and, if relevant, to arrange working together.',
+						text: 'When you send a message through the contact form or the chat window, I collect the name, email address or phone number and message you entered. I use them only to reply to your enquiry and, if relevant, to arrange working together.',
 					},
 					{
 						type: 'list',
 						items: [
 							'Legal basis: taking steps at your request and my legitimate interest in replying to your enquiry.',
-							'The message is not stored in a database on this site — it is forwarded to my email through Resend (Resend, Inc.).',
+							'The message is not stored in a database on this site — it is forwarded to my email through Resend (Resend, Inc.) and to my Telegram account through Telegram (Telegram Messenger Inc.).',
 							'I keep this data for as long as our conversation and any collaboration last, and delete it on request or once it is no longer needed.',
 						],
 					},
@@ -263,7 +263,7 @@ const CONTENT: Record<
 				blocks: [
 					{
 						type: 'p',
-						text: 'Google, Vercel and Resend may process data outside Serbia and the EU, including in the United States. These providers apply appropriate safeguards such as standard contractual clauses.',
+						text: 'Google, Vercel, Resend and Telegram may process data outside Serbia and the EU, including in the United States and the United Arab Emirates. These providers apply appropriate safeguards such as standard contractual clauses.',
 					},
 				],
 			},

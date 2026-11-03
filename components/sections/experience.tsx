@@ -77,7 +77,7 @@ export function Experience() {
 							description={t.expFree}
 						/>
 						<TimelineStep
-							date={`2023 — ${t.now}`}
+							date={t.konisPeriod}
 							dateClassName='text-accent'
 							dotClassName='bg-accent'
 							dotSize={13}
